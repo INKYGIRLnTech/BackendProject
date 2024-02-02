@@ -7,7 +7,6 @@ const Sequelize = require('sequelize');
 const app = express()
 app.use(bodyParser.json())
 
-//SQLite database
 
 
 //Product model

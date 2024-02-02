@@ -7,3 +7,5 @@ const sequelize = new Sequelize({
     storage: path.join(__dirname, 'products.db'),
     logging: false
 })
+
+module.exports = {sequelize}
