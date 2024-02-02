@@ -6,6 +6,11 @@ const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: path.join(__dirname, 'products.db'),
     logging: false
-})
+});
 
-module.exports = {sequelize}
+//Sync the database
+sequelize.sync().then(() => {
+    console.log('Database is synced');
+});
+
+module.exports = { sequelize };
