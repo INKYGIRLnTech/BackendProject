@@ -1,6 +1,17 @@
 const app = require("./server/app");
 
-const PORT = process.env.Port || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-})
+const PORT = process.env.PORT || 3000;
+
+const init = async () => {
+    try {
+        await db.sync();
+
+        app.listen(PORT, () => {
+            console.log(`Server listening on port ${PORT}`);
+        })
+    } catch (error) {
+        console.error('Error starting server:', error)
+    }
+};
+
+init();
