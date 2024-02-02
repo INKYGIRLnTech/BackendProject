@@ -9,10 +9,5 @@ app.use(bodyParser.json())
 
 
 
-//Product model
-const Product = sequelize.define('product', {
-    name: {type: Sequalize.STRING, allowNull: false},
-    description: Sequelize.STRING,
-    price: Sequalize.NUM
-})
+
 
