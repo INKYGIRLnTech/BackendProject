@@ -9,7 +9,7 @@ const Product = sequelize.define("products", {
         type: DataTypes.NUMERIC,
         allowNull: false,
     }
-})
+});
 
 module.exports = {
     db: sequelize,
