@@ -1,12 +1,13 @@
 //imported libraries
 const express = require('express');
-const bodyParser = require('body-parser');
+const productRouter = require('./routes/products');
+
 
 
 //express app
 const app = express()
-app.use(bodyParser.json())
-
+app.use(express.json())
+app.use("/products", productRouter);
 
 
 // error handling middleware
