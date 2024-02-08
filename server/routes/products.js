@@ -13,11 +13,11 @@ router.post("/", async (req, res, next) => {
 });
 
 
-// read/find one products
-router.get("/:id", async (req, res, next) => {
+// read/find products
+router.get("/", async (req, res, next) => {
     try{
-        const id = req.params.id
-        const product = await Product.findByPk(id)
+        
+        const product = await Product.findAll()
         res.json(product)
     } catch(err) {
         next(err)
