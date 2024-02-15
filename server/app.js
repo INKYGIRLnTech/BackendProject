@@ -3,6 +3,7 @@ const express = require('express');
 const userRouter = require('./routes/user');
 const productRouter = require('./routes/products');
 const { auth } = require('express-openid-connect');
+require('dotenv').config();
 
 
 
