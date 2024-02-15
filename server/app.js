@@ -1,5 +1,6 @@
 //imported libraries
 const express = require('express');
+const userRouter = require('./routes/user');
 const productRouter = require('./routes/products');
 const { auth } = require('express-openid-connect');
 
@@ -27,6 +28,7 @@ app.use(express.json());
 
 app.use(auth(config));
 
+app.use("/user", userRouter);
 app.use("/products", productRouter);
 
 
