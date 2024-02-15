@@ -1,7 +1,7 @@
 const router = express.Router();
 const { requiresAuth } = require('express-openid-connect');
 
-route.get('/', requiresAuth(), async (req, res) => {
+router.get('/', requiresAuth(), async (req, res) => {
     res.json(req.oidc.user)
 });
 
