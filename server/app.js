@@ -1,12 +1,32 @@
 //imported libraries
 const express = require('express');
 const productRouter = require('./routes/products');
+const { auth } = require('express-openid-connect');
 
 
 
 //express app
-const app = express()
-app.use(express.json())
+const app = express();
+
+const {
+    AUTH0_SECRET,
+    AUTH0_CLIENT_ID,
+    AUTH0_ISSUER_BASE_URL
+} = process.env;
+
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: AUTH0_SECRET,
+    baseURL:'http://localhost:3000', 
+    clientID: AUTH0_CLIENT_ID,
+    issuerBaseURL: AUTH0_ISSUER_BASE_URL
+};
+
+app.use(express.json());
+
+app.use(auth(config));
+
 app.use("/products", productRouter);
 
 
