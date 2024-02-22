@@ -18,6 +18,18 @@ function addToCart(product) {
     }
 };
 
+// function to remove product from cart
+function removeFromCart(productId) {
+
+    //Find the index of the product in the cart
+    const productIndex = cart.findIndex(item => item.productId === productId);
+
+    if (productIndex !== -1) {
+        // Remove if the product exists in the cart
+        cart.splice(productIndex, 1);
+    }
+};
+
 
 
 module.exports = router;
