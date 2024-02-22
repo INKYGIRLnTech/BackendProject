@@ -4,7 +4,7 @@ const router = express.Router();
 const cart = [];
 
 // function to add product to cart 
-addToCart(product) {
+function addToCart(product) {
 
     // Check if the product already exists in the cart
     const existingProductIndex = cart.findIndex(item => item.productId === product.productId);
