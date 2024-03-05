@@ -24,6 +24,18 @@ router.get("/", async (req, res, next) => {
     }
 });
 
+//find one product
+router.get("/:id", async (req, res, next) => {
+    try{
+        const id = req.params.id
+        const product = await Product.findByPk(id)
+
+        res.json(product)
+    } catch(err) {
+        next(err)
+    }
+});
+
 //update products by ID
 router.put("/:id", async (req, res, next) => {
     try{
