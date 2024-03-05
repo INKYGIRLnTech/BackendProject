@@ -25,12 +25,17 @@ const config = {
     issuerBaseURL: AUTH0_ISSUER_BASE_URL
 };
 
+
 app.use(express.json());
 
 app.use(auth(config));
 
 app.use("/user", userRouter);
 app.use("/products", productRouter);
+
+app.get('/callback', (req, res) => {
+    res.send('Callback route reached successfully')
+});
 
 
 // error handling middleware
