@@ -26,7 +26,7 @@ const Cart = sequelize.define('Cart', {
 });
 
 CartItem.belongsTo(Cart);
-Cart.hasmany(CartItem);
+Cart.hasMany(CartItem);
 CartItem.belongsTo(Product);
 
 module.exports = {
