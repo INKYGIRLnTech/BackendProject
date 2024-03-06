@@ -23,6 +23,7 @@ const config = {
     baseURL:'http://localhost:3000', 
     clientID: AUTH0_CLIENT_ID,
     issuerBaseURL: AUTH0_ISSUER_BASE_URL
+  
 };
 
 
@@ -30,8 +31,18 @@ app.use(express.json());
 
 app.use(auth(config));
 
+const checkUserRole = (req, res, next) => {
+    const userRole = req.openid.user.role;
+    
+    if (userRole === 'admin') {
+        next();
+    } else {
+        res.status(403).send('Forbidden: You do not have permission to access this resource.')
+    }
+};
+
 app.use("/user", userRouter);
-app.use("/products", productRouter);
+app.use("/products", checkUserRole, productRouter);
 
 app.get('/callback', (req, res) => {
     res.send('Callback route reached successfully')
