@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { Product } = require("../models");
+const { requiresAuth } = require('express-openid-connect');
+
+router.use(requiresAuth());
 
 // create/add new product
 router.post("/", async (req, res, next) => {
