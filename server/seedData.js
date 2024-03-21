@@ -40,6 +40,10 @@ module.exports = {
             "createdAt": "2024-02-08T16:14:11.567Z",
             "updatedAt": "2024-02-08T16:14:11.567Z"
         }
+    ],
+
+     users: [
+        { 'email': 'testdummy@gmail.com', 'password': 'Test12345', 'role': 'admin'}
     ]
     
 };

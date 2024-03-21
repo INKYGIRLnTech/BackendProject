@@ -19,8 +19,9 @@ router.post("/", async (req, res, next) => {
 // read/find products
 router.get("/", async (req, res, next) => {
     try{
-        
+        console.log(req.oidc.user)
         const product = await Product.findAll()
+        console.log(product)
         res.json(product)
     } catch(err) {
         next(err)

@@ -31,8 +31,8 @@ app.use(express.json());
 
 app.use(auth(config));
 
-const checkUserRole = (req, res, next) => {
-    const userRole = req.openid.user.role;
+const checkUserRole = async (req, res, next) => {
+    const userRole = req.oidc.user.role;
     
     if (userRole === 'admin') {
         next();
@@ -43,6 +43,10 @@ const checkUserRole = (req, res, next) => {
 
 app.use("/user", userRouter);
 app.use("/products", checkUserRole, productRouter);
+
+app.get('/', async (req, res) => {
+    res.send(req.oidc.isAuthenticated() ? "logged in" : "logged out");
+});
 
 app.get('/callback', (req, res) => {
     res.send('Callback route reached successfully')
