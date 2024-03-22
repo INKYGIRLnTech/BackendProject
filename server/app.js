@@ -42,7 +42,7 @@ const checkUserRole = async (req, res, next) => {
 };
 
 app.use("/user", userRouter);
-app.use("/products", checkUserRole, productRouter);
+app.use("/products", productRouter);
 
 app.get('/', async (req, res) => {
     res.send(req.oidc.isAuthenticated() ? "logged in" : "logged out");
